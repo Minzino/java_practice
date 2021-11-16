@@ -23,6 +23,7 @@ public class gugudan_first {
 		}else if(number < 2 || number > 1) {
 			System.out.println("2이상, 9이하의 값만 입력할 수 있습니다.");
 		}
+		
 
 	}
 
