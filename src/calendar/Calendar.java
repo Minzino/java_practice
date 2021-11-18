@@ -24,13 +24,17 @@ public class Calendar {
 		Scanner sc = new Scanner(System.in);
 		Calendar cal = new Calendar();
 		
+		System.out.println("반복횟수를 입력하세요.");
+		int repeat = sc.nextInt();
+		//횟수를 잘알때는 for가 좋고 횟수를 잘 모를때는 while이 좋다.
+		while(repeat > 0) {
 		System.out.println("달을 입력하세요.");
 		int month = sc.nextInt(); // 출력할 달 입력
-		sc.close();
-		
 		System.out.println(month+"월은 "+cal.maxDaysOfMonth(month)+"일까지 있습니다.");
-		
-		
+		repeat--;
+		}
+		System.out.println("Bye~");
+		sc.close();
 
 	}
 }
