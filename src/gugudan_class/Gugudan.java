@@ -2,7 +2,7 @@ package gugudan_class;
 
 public class Gugudan {
 	public static int[][] calculate(int times1, int times2) {
-		int[][] result = new int[times1-1][times2]; //2 times1�� -1 
+		int[][] result = new int[times1-1][times2]; // 2단부터 출력하기때문에 times1(행)에 -1을 해주었습니다.
 		for (int i = 0; i < (times1-1); i++) {
 			for (int j = 0; j < times2; j++) {
 				result[i][j] = (i + 2) * (j + 1);
