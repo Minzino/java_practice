@@ -1,10 +1,8 @@
 package gugudan_class;
 
-import java.util.Scanner;
-
 public class Gugudan {
 	public static int[][] calculate(int times1, int times2) {
-		int[][] result = new int[times1-1][times2]; //2´ÜºÎÅÍ ½ÃÀÛÀÌ±â¶§¹®¿¡ times1¿¡ -1À» ÇØÁá½À´Ï´Ù. 
+		int[][] result = new int[times1-1][times2]; //2 times1ï¿½ï¿½ -1 
 		for (int i = 0; i < (times1-1); i++) {
 			for (int j = 0; j < times2; j++) {
 				result[i][j] = (i + 2) * (j + 1);
@@ -14,8 +12,8 @@ public class Gugudan {
 	}
 
 	public static void print(int[][] result) {
-		for (int i = 0; i < result.length; i++) { //ÀÌÂ÷¿ø¹è¿­¿¡¼­ °ıÈ£¾øÀ»¶§´Â ÇàÀÇ ±æÀÌ¸¦ ³ªÅ¸³¿
-			for (int j = 0; j < result[i].length; j++) { //[i]°¡ ÀÖÀ»¶§´Â °¢ Çà¿¡¼­ ¿­ÀÇ ±æÀÌ¸¦ ³ªÅ¸³¿
+		for (int i = 0; i < result.length; i++) { //ì´ì°¨ì›ë°°ì—´.lengthëŠ” í–‰ì˜ ê¸¸ì´ë¥¼ ë‚˜íƒ€ëƒ„.
+			for (int j = 0; j < result[i].length; j++) { //ì´ì°¨ì›ë°°ì—´[i]ëŠ” ií–‰ì˜ ì—´ì˜ ê¸¸ì´ë¥¼ ë‚˜íƒ€ëƒ„.
 				System.out.println( (i + 2) + " X " + (j + 1) + " = " +result[i][j]);
 			}
 		}

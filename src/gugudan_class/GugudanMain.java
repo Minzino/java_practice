@@ -11,6 +11,8 @@ public class GugudanMain {
 	public static void main(String[] args) {
 		
 		Scanner scanner = new Scanner(System.in);
+		scanner.close();
+		
 		String number[] = scanner.nextLine().split(",");
 		int first = Integer.parseInt(number[0]);
 		int second = Integer.parseInt(number[1]);
