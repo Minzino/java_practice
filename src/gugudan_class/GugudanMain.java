@@ -11,9 +11,10 @@ public class GugudanMain {
 	public static void main(String[] args) {
 		
 		Scanner scanner = new Scanner(System.in);
-		scanner.close();
 		
+		System.out.print("구구단 출력을 멈출범위 입력: ");		
 		String number[] = scanner.nextLine().split(",");
+		scanner.close();
 		int first = Integer.parseInt(number[0]);
 		int second = Integer.parseInt(number[1]);
 		int[][] result = Gugudan.calculate(first,second);
