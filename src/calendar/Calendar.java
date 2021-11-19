@@ -50,7 +50,12 @@ public class Calendar {
 		for (int i = 1; i <= maxDay; i++) {
 			j++;
 			if (i == maxDay2 || j % 7 == 0) {
-				System.out.printf("%3d \n", i);
+				if(i==1 && j==7) {
+					System.out.println("                          "+i);
+					weekday = 0;
+				}else {
+					System.out.printf("%3d \n", i);
+				}
 			}			
 			else {
 				while(weekday != 0) {
