@@ -54,7 +54,7 @@ public class Calendar {
 		day.put("SA", 6);
 
 		
-		System.out.printf("       << %4d  %2d >>\n", year, month);
+		System.out.printf("       << %4d년  %2d월 >>\n", year, month);
 		StringBuilder sb = new StringBuilder();
 		sb.append("  SU  MO  TU  WE  TH  FR  SA\n");
 		sb.append("  ---------------------------");
