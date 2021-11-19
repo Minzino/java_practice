@@ -1,11 +1,14 @@
 package calendar;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Prompt {
 
 	private final static String PROMPT_year = "YEAR> ";
 	private final static String PROMPT_month = "MONTH> ";
+	private final static String PROMPT_weekday = "WEEKDAY> ";
 
 	public void runPrompt() {
 		Scanner sc = new Scanner(System.in);
@@ -13,6 +16,15 @@ public class Prompt {
 
 		int year = 0;
 		int month = 0;
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		map.put("SU", 0);
+		map.put("MO", 1);
+		map.put("TU", 2);
+		map.put("WE", 3);
+		map.put("TH", 4);
+		map.put("FR", 5);
+		map.put("SA", 6);
+		map.put("-1", -1);
 
 		// 횟수를 잘알때는 for가 좋고 횟수를 잘 모를때는 while이 좋다.
 		while (true) {
@@ -34,7 +46,16 @@ public class Prompt {
 				System.out.println("1~12사이의 달만 입력할 수 있습니다.");
 				continue;
 			}
-			cal.printCalendar(year, month); // 달력을 출력
+
+			System.out.println("첫번째 요일을 입력하세요.(SU, MO, WE, TH, FR, SA)");
+			System.out.print(PROMPT_weekday);
+			int weekday = map.get(sc.next());
+			if(weekday == -1) {
+				break;
+			}
+
+
+			cal.printCalendar(year, month, weekday); // 달력을 출력
 			System.out.println();
 		}
 		System.out.println("Have a nice day!"); // 프로그램 종료시 출력
