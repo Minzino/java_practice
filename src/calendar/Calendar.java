@@ -1,27 +1,8 @@
 package calendar;
 
-import java.util.HashMap;
-import java.util.Map;
-
-/*
- * 년도를 입력하세요.
- * YEAR> 2017
- * 달을 입력하세요.
- * MONTH> 3
- * 첫번째 요일을 입력하세요. (SU, MO, WE, TH, FR, SA)
- * WEEKDAY> WE
- * <<2017년  3월>>
- * SU MO TU WE TH FR SA
- * ---------------------
- *         1  2  3  4
- * 5  6  7  8  9 10 11
- * ...
- */
 public class Calendar {
 	private static final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	private static final int[] LEAP_MAX_DAYS = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	
-	
 
 	// 윤년 계산 메소드
 	public boolean isLeapYear(int year) {
@@ -42,39 +23,52 @@ public class Calendar {
 			return MAX_DAYS[month - 1];
 		}
 	}
-
-	public void printCalendar(int year, int month, String weekday) {
-		Map<String,Integer> day = new HashMap<String,Integer>();
-		day.put("SU", 0);
-		day.put("MO", 1);
-		day.put("TU", 2);
-		day.put("WE", 3);
-		day.put("TH", 4);
-		day.put("FR", 5);
-		day.put("SA", 6);
-
+	
+	
+	private int getWeekDay(int year, int month, int day){
+		int syear = 1970;
+		final int STANDARD_WEEKDAY = 3; //1970년 1월 1일은 목요일
 		
-		System.out.printf("       << %4d년  %2d월 >>\n", year, month);
+		int count = 0;
+		
+		for(int i = syear; i <year; i++) {
+			int delta = isLeapYear(i) ? 366 : 365;
+			count += delta;
+		} //구하려는 연도의 전년도까지 카운트
+		
+		for(int i = 1; i<month; i++) {
+			int delta = getmaxDaysOfMonth(year, i);
+			count += delta;
+		} //구하려는 달의 전달까지 카운트
+		
+		count += day; // 전 달의 마지막날까지 더해줬으니 해당 월의 1일을 위해 day(=1)를 더해준다.
+		
+		int weekday = (count + STANDARD_WEEKDAY) % 7;
+		
+		return weekday;
+	}
+
+	public void printCalendar(int year, int month) {
+
+		System.out.printf("       << %d년  %d월 >>\n", year, month);
 		StringBuilder sb = new StringBuilder();
 		sb.append("  SU  MO  TU  WE  TH  FR  SA\n");
 		sb.append("  ---------------------------");
 		System.out.println(sb);
-
-		int maxDay = getmaxDaysOfMonth(year, month);
-
-		int count = 0;
-		
-		//weekday만큼 공백 생성
-		for (int j = 0; j < day.get(weekday); j++) {
+				
+		int weekday = getWeekDay(year,month,1);
+		for(int i = 0; i < weekday; i++) {
 			System.out.print("    ");
-			count++;
 		}
 
+		int maxDay = getmaxDaysOfMonth(year, month);		
+		int count = weekday;
+		
 		for (int i = 1; i <= maxDay; i++) {
 			System.out.printf("%4d", i);
 			count++;
-			if(count % 7 ==0) {
-				System.out.println(); //카운트가 7로 나누어떨어질때마다 줄바꿈
+			if (count % 7 == 0) {
+				System.out.println(); // 카운트가 7로 나누어떨어질때마다 줄바꿈
 			}
 		}
 	}
