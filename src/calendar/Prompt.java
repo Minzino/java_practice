@@ -19,7 +19,7 @@ public class Prompt {
 
 	/**
 	 * 1. switch case - String 
-	 * 2.Plan class - refactoring?
+	 * 2. Plan class - refactoring?
 	 */
 
 	/**
@@ -136,7 +136,7 @@ public class Prompt {
 			if (word.endsWith(";")) {
 				break;
 			}
-			text += word + "\n";
+			text += word;
 		}
 		cal.registerPlan(date, text);
 	}
