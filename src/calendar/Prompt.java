@@ -83,9 +83,9 @@ public class Prompt {
 				isLoop = false;
 				break;
 			}
-			System.out.println("Hava a nice day~");
-			scanner.close();
 		}
+		System.out.println("Hava a nice day~");
+		scanner.close();
 
 		
 		
@@ -115,14 +115,12 @@ public class Prompt {
 		System.out.println("[일정 검색]");
 		System.out.println("날짜를 입력해 주세요.(yyyy-MM-dd)");
 		String date = br.readLine();
-		String plan = "";
-		try {
-			plan = cal.searchPlan(date);
-		} catch (ParseException e) {
-			e.printStackTrace();
-			System.err.println("일정 검색 중 오류가 발생했습ㄴ디ㅏ.");
+		PlanItem plan = cal.searchPlan(date);
+		if(plan != null) {
+			System.out.println(plan.detail);
+		}else {
+			System.out.println("일정이 없습니다.");
 		}
-		System.out.println(plan);
 	}
 
 	private void cmdRegister(BufferedReader br, Calendar cal) throws ParseException, IOException {
