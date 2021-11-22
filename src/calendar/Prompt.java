@@ -18,29 +18,35 @@ public class Prompt {
 	}
 
 	/**
+	 * 1. switch case - String 
+	 * 2.Plan class - refactoring?
+	 */
+
+	/**
 	 * 
 	 * @param week 요일명
 	 * @return 0 ~ 6 (0 = Sunday, 6 = Saturday)
 	 */
 	public int parseDay(String week) {
-		if (week.equals("su"))
+		switch (week) {
+		case "su":
 			return 0;
-		else if (week.equals("mo"))
+		case "mo":
 			return 1;
-		else if (week.equals("tu"))
+		case "tu":
 			return 2;
-		else if (week.equals("we"))
+		case "we":
 			return 3;
-		else if (week.equals("th"))
+		case "th":
 			return 4;
-		else if (week.equals("fr"))
+		case "fr":
 			return 5;
-		else if (week.equals("sa"))
+		case "sa":
 			return 6;
-		else
+		default:
 			return 0;
+		}
 	}
-
 //	+----------------------+
 //	| 1. 일정 등록           
 //	| 2. 일정 검색           
@@ -54,24 +60,35 @@ public class Prompt {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Scanner scanner = new Scanner(System.in);
 		Calendar cal = new Calendar();
+		
+		boolean isLoop = true;
 
-		while (true) {
+		while (isLoop) {
 			System.out.println("명령 (1, 2, 3, h, q)");
 			String cmd = scanner.next();
-			if (cmd.equals("1"))
+			switch(cmd) {
+			case "1":
 				cmdRegister(br, cal);
-			else if (cmd.equals("2"))
-				cmdSearch(br, cal);
-			else if (cmd.equals("3"))
-				cmdCal(scanner, cal);
-			else if (cmd.equals("h"))
-				printMenu();
-			else if (cmd.equals("q"))
 				break;
+			case "2":
+				cmdSearch(br, cal);
+				break;
+			case "3":
+				cmdCal(scanner,cal);
+				break;
+			case "h":
+				printMenu();
+				break;
+			case "q":
+				isLoop = false;
+				break;
+			}
+			System.out.println("Hava a nice day~");
+			scanner.close();
 		}
 
-		System.out.println("Hava a nice day~");
-		scanner.close();
+		
+		
 	}
 
 	private void cmdCal(Scanner scanner, Calendar cal) {
@@ -116,9 +133,9 @@ public class Prompt {
 		System.out.println("일정을 입력해 주세요.(입력종료는 ;)");
 		String text = "";
 		while (true) {
-			String word = br.readLine(); //nextLine은 에러가 있는 거같아서 readLine으로 입력을 한번에 받아줬다.
-			
-			if(word.endsWith(";")) {
+			String word = br.readLine(); // nextLine은 에러가 있는 거같아서 readLine으로 입력을 한번에 받아줬다.
+
+			if (word.endsWith(";")) {
 				break;
 			}
 			text += word + "\n";
