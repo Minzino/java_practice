@@ -5,7 +5,7 @@
 |:---:|:---:|
 |[1주차](Playground/week_01/readme.md)|Github, Markdown, 객체지향|
 
-<br/><br/><br/>
+<br/><br/>
 
 | 미션 | 링크 |
 |:---:|:---:|
